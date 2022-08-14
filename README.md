@@ -347,13 +347,13 @@ settings.gradle
 
 ###  :loudspeaker: How We Worked
 
-- **애자일 프로세스를 차용하여 프로젝트 마일스톤 진행**
+- :date: **애자일 프로세스를 차용하여 프로젝트 마일스톤 진행**
 
 	- [**GitHub Project**](https://github.com/mock-rc4/netflix-test-server-bon-zeze/projects/1) 활용하여 스프린트 관리 <br> 
 	- 데일리 회고, 위클리 스크럼을 진행하며 스프린트에 맞게 프로토타입을 구현 및 개선
 
 <details>
-	<summary><b> 📝 개발 일지 </b></summary>
+	<summary><b> &nbsp; 📝 개발 일지 </b></summary>
 <div markdown="1">
 
 <br>
@@ -363,11 +363,16 @@ settings.gradle
 <div markdown="1">
 	
 ## 2022.03.19 개발 일지
-### 제제 & 본(Bon)
-1. 개발 명세서 작성
-2. ERD 1차 초안 
+#### Work
+- 기획서 작성 및 ERD 설계와 기능 API 정리를 위한 회의
+- EC2, RDS 서버 구축
+- 서브 도메인(dev, prod) 적용
+- prod 폴더에 스프링 템플릿 적용
+- 서브도메인(dev, prod)에 각각 SSL 적용(By CertBot)
+
+#### 데일리 회고
 <details>
-<summary>3. 협업 회의 내용</summary>
+<summary>협업 회의 내용</summary>
 <div markdown="1">
 
 **회의 회고록**
@@ -401,32 +406,15 @@ settings.gradle
           정규화를 지켜서 테이블로 생성하는게 좋다고 생각
   - 협의 : 우선은 TEXT 로 인물을 string 값으로 하나의 컬럼에 적어서 개발해 본 후 추후에 재협의
   
-  
 </div>
 </details>
 
-### 본(Bon)
-
-- 기획서 제출 후, 제제와 함께 ERD 설계와 기능 API 목록 정리를 위한 논의를 진행
-(2:00 pm ~ 10:30 pm  / 8 hours 30 minutes )
-
-- EC2, RDS 서버 구축
-- 서브 도메인(dev, prod) 적용
-- prod 폴더에 스프링 템플릿 적용
-- 서브도메인(dev, prod)에 각각 SSL 적용(By CertBot)
-
-#### 느낀점 및 협업 내용
 - 서버 개발 2인 모두가 납득을 해야 ERD 설계와 API 기능 정리가 가능했다.
 - 그래서 시간이 제법 딜레이 되었으나, 둘 모두 협업이 처음이었기에 오히려 유의미했다.
 - 아직 의견이 하나가 되지 못하는 사안에 대해서는, 차후에 다시 이야기를 나누어 가보기로 결정했다.
+- ERD 를 설계하며 서로 다른 스타일을 맞춰나가며 협업하여 ERD를 설계하는 경험을 쌓을 수 있었다.
+<br>
 
-### 제제(Zeze)
-
-- 본과 함께 API 기능 정리 및 ERD 설계
-
-#### 회의 회고록
-  - ERD 를 설계하며 서로 다른 스타일을 맞춰나가며 협업하여 ERD를 설계하는 경험을 쌓을 수 있었다.
-	
 </div>
 </details>
 
@@ -436,27 +424,24 @@ settings.gradle
 	
 ## 2022.03.20 개발 일지
 
-### 본(Bon)
+#### Work
 
-
-#### API
-
-+ 계정(Account)
-  + API 서비스를 위한 코드 골격 구현
-  + 회원 가입 API 구현
-  + 회원 목록 조회 API 구현(전체 목록 조회, queryString으로 membership 조건 조회)
-  + 회원 조회 API 구현(accountIdx로 검색)
-  + 회원 탈퇴 API 구현
-  
+- 도메인 연결
+- 계정(Account) 관련 기능 API 구현
+  - 회원 가입,탈퇴 API
+  - 회원 로그인, 로그아웃 API
+  - 회원 정보 (이메일,비밀번호,휴대폰,멤버쉽) 변경 API
+  - 회원 목록 조회 API 구현(전체 목록 조회, queryString으로 membership 조건 조회)
+  - 회원 조회 API 구현(accountIdx로 검색)
 
 + SMS 문자 발송 서비스
   + SMS 메시지 전송 API 구현
   + SMS 인증번호 전송 API 구현 (6자리 난수 생성 후 client에게 전송, client는 response와 휴대폰번호로 발송된 번호가 일치하는지 대조)
 
-#### What I did today
 + AWS 서버에 탄력적 IP를 사용하도록 변경
 + 서브 도메인(dev, prod) 외 별도의 대표 도메인(teamflix.shop) 을 서버에 적용 
 + 9000번 포트에서 작동중인 Spring boot 서버를 prod 도메인과 대표 도메인이 가리키도록 세팅
+
 #### ISSUE
 + **AWS 서버 내부 에러 발생**
   
@@ -480,8 +465,6 @@ settings.gradle
   ```
   
   
-  
-  
   ![ㅋㅍㅋㅍ](https://user-images.githubusercontent.com/34790699/159164528-8736ca08-8430-478a-a797-7da45acaa3ee.png)
 
   + **발생 배경**
@@ -502,28 +485,11 @@ settings.gradle
     3. 완전한 삭제 후 재설치, 처음부터 모든 일련의 과정을 적용하고 나니 문제 없이 작동하는 것이 확인되었다.
 
 
-### 제제(Zeze)
-
-#### API 개발
-- 도메인 연결
-- 계정(Account)
-  - 회원 로그인 API 구현
-  - 회원 로그아웃 API 구현
-  - 회원 이메일 변경 API 구현
-  - 회원 비밀번호 변경 API 구현
-  - 회원 휴대폰번호 변경 API 구현
-  - 회원 멤버쉽 변경 API 구현 (결제 API랑 무관)
-
-#### 개발&협업 회고록
+#### 데일리 회고
   - Git 에서 협업하며 개발하는 경험을 쌓을 수 있었다.
   - 서로 코드 스타일, 규약등을 맞춰야 할 필요성을 느낄 수 있었다.
   - 데이터 값을 넣을 때 서로 공유하지 않으면 혼동이 올 수 있음을 느꼈다.
-
-#### 개발 이슈
-  - `java.lang.NumberFormatException: For input string: "login"`
-    - string 을 int 형으로 변환 할 수 없다고 하여서 코드에서 오류를 찾느라 당황하였다.
-    - 원인/이유) POST Mapping 인데 PostMan 에서 Get 으로 호출하였더니 발생한 오류
-
+<br>
 
 </div>
 </details>
@@ -534,20 +500,14 @@ settings.gradle
 
 ## 2022.03.21 개발 일지
 
-### 본(Bon)
+#### Work
 
-
-#### API
-
-+ 계정(Account)
-  + 기존의 회원 가입 API 제거 
++ 계정(Account)관련 기능 API 구현
+  + 기존의 회원 가입 API 리팩터링
   + 프론트엔드 팀원과 협의 후 해당 조건에 맞는 신규 API 2종 추가 -> **넷플릭스의 회원가입 flow를 그대로 따름**
 
-
     1. 넷플릭스 회원가입 단계 조회 API 구현 
-
-
-
+    
       + 이메일을 form 으로 제출하면 세가지 유형 상태가 발생 (미가입 계정 or 이메일&비밀번호만 등록된 계정 or 결제수단까지 모두 등록된 계정)
       + 이메일을 서버에 넘기면 아래의 세 가지 경우중 하나를 리턴
         ```
@@ -555,11 +515,12 @@ settings.gradle
         2. 이메일과 비번은 설정(가입)이 되어있는데 결제가 안되어있는 경우
         3. 가입과 결제가 다 되어있는경우 
         ```
-    2. 회원 가입 API 구현 (email, password로 회원 등록)
-
-#### What I did today
-
-
+	
+- 프로필(Profile)관련 기능 API 구현
+  - 프로필 생성 API 구현
+  - 프로필 사진 등록,변경 API 구현
+- ~회원 로그아웃 API JWT 전체 구현 리팩토링~ → `진행중`
+  
 + API 명세서의 최신화
 + 프론트 엔드 팀원의 요청에 맞게 API를 고안하여 아래와 같이 초안을 작성 후 공유 및 논의
 
@@ -579,43 +540,22 @@ settings.gradle
          - request item : 토큰, 계정 식별자, 멤버쉽 유형
          - response item : 계정 식별자, 토큰
         ```
-+ ERD 
++ ERD Profile 관련 변경
    + 회원가입시 email과 password만 있으면 회원 등록이 이루어지므로 나머지 컬럼을 필수 필드가 아닌 Nullable한 값으로 변경
 	+ -> id 비밀번호로 계정을 등록하고, 이외 정보의 입력 과정은 차후 회원가입 단계별 진행을 통해 별도로 처리되기 때문.
 	
 	![ㅜㅜㅜ](https://user-images.githubusercontent.com/34790699/159532524-32a5d955-d2f5-4540-bf00-75c06f01ca0d.png)
 
-	
-#### 회고
 
-+ 처음으로 프론트엔드 팀원과 API 형태에 대해 소통해 보았다.
-+ 요구사항을 100% 반영할 수 있도록 API를 설계후 구현해 보는 과정을 가졌다.
-+ 긴밀한 협의를 통해 앞으로도 이와 같이 반영해 갈 수 있으면 좋겠다고 생각한다.
-
-
-
-### 제제(Zeze)
-
-#### API 개발
-- 프로필
-  - 프로필 코드 골격 구현
-  - 프로필 생성 API 구현
-  - ~프로필 전체 변경 API 구현~
-  - ~프로필 사진 지정 API 구현~
-- 리팩토링
-  - 회원 변경 API 컬럼 리팩토링
-  - ~회원 로그아웃 API JWT 전체 구현 리팩토링~ → `진행중`
-
-#### ERD Update
-- Profile 테이블 변경
-
-#### 개발&협업 회고록
-  - 프론트분들과 협업하면 Req, Res 값이 변경됨에 따라 API가 많이 차이 날 수 있음을 깨달았다.
-  - 협업하다보니 git에 대한 혼동이 생겨서 계속해서 공부해야 할 것 같다.
-
-#### 개발 이슈
+#### ISSUE
 - Git 충돌 발생 해결 -> 
   https://github.com/mock-rc4/netflix-test-server-bon-zeze/issues/48#issue-1182603888
+  
+#### 데일리 회고
++ 프론트엔드 팀원과 API 형태에 대해 소통하며 맞춰야할 점들을 논의하였다.
++ 요구사항을 100% 반영할 수 있도록 API를 설계후 구현해 보는 과정을 가졌다.
++ 긴밀한 협의를 통해 앞으로도 이와 같이 반영해 갈 수 있으면 좋겠다고 생각한다.
+<br>
 
 </div>
 </details>
@@ -626,9 +566,7 @@ settings.gradle
 
 ## 2022.03.22 개발 일지
 
-### 본(Bon)
-
-#### API 개발
+#### Work
 - 소셜 로그인 서비스 WORKFLOW https://github.com/mock-rc4/netflix-test-server-bon-zeze/issues/70#issue-1189058146
 - 네이버 소셜 로그인 서비스 API
 - 파라메터를 조합하여 네이버 로그인 URL을 불러오는 API 구현
@@ -638,10 +576,11 @@ settings.gradle
 - 네이버 계정으로 로그인 기능 API 구현
 - 네이버 계정만으로 로그아웃(연결끊기) 기능 API 구현
 - 프로필 삭제 API 구현
+- 프로필 전체 변경 API 구현
+- 프로필 사진 조회 API 구현
+- 회원 로그인 API 
 - 계정 식별자를 통해 프로필 목록을 조회하는 API 구현
 - 프로필을 조회하는 API 구현
-
-#### What I did today
 - nohup 명령어를 사용한 백그라운드 실행으로 Spring Boot Server를 정상적으로 운영할 수 없었던 이슈를 해결.
 	- 하단 ISSUE란 참조.
 - NETFLIX 사이트 실 서비스를 기반으로 API를 모델링 하기 위해 사이트 내부 기능 사용 시도 (소셜 로그인, 로그인 등)
@@ -652,8 +591,6 @@ settings.gradle
 		Netflix 이메일과 비밀번호를 사용하여 로그인해 주세요.
 		```
 		-> **참고하여 네이버 소셜 로그인 서비스도 같은 Workflow를 따르도록 설계했다.**
-		
-
 
 - 네이버 소셜 로그인에 대한 workflow를 완전히 이해하고 습득하여 추후 팀원들에게 전달할 내용을 정리
 	+ 자세한 건 https://developers.naver.com/docs/login/api/api.md 네이버 REST 로그인 API 명세를 참고하여 구현했다.
@@ -674,7 +611,7 @@ settings.gradle
 		+ 팀원들의 네이버 계정 ID를 요청해서, 네이버 소셜 로그인 서비스를 이용해 볼 수 있도록 설계한다.
 	
 	
-+ ERD
++ ERD 변경
 	+ 소셜 로그인 idx를 너무 작은 용량으로 세팅해놔서 VARCHAR(30)- > VARCHAR(50)으로 변경
 		![image](https://user-images.githubusercontent.com/34790699/159535326-894448e2-858e-401f-9ccf-0dfc690a03be.png)
 
@@ -685,45 +622,28 @@ settings.gradle
 	
 #### ISSUES
 
-1. AWS 서버내 nohub 명령으로 백그라운드 동작시 최신 빌드가 반영 되지 않음
+- AWS 서버내 nohub 명령으로 백그라운드 동작시 최신 빌드가 반영 되지 않음
 	+ 해결 방법
 		1. aws 인스턴스를 중지후 시작 -> 정상적으로 반영됨
 		2. PID KILL으로 해결
 	- 실행을 하고나면, 명령어를 실행한 경로에 nohup.out이라는 파일이 생기며, program 이라는 프로세스가 뿜어내는 로그들을 찍게 되는데, 이후에 해당 프로세스를 kill하거나 재실행 하기 위해서는, 프로세스를 일일히 pid를 알아내서 kill 필요
 
 
-2. 프론트 & 백 간에 CORS(Cross Origin Resource Sharing) 에러 발생
-3. Pull Request의 Complex Conflicts
+- 프론트 & 백 간에 CORS(Cross Origin Resource Sharing) 에러 발생
+- Pull Request의 Complex Conflicts
 	![image](https://user-images.githubusercontent.com/34790699/159536691-1337819b-a58b-44f8-8cb1-c3a0922691d9.png)
-			
 			
 	+ 무거운 SPring Boot의 빌드시 나타나는 과부하 이슈때문에 로컬 빌드파일을 올린 것이 문제의 원인.
 	+ 레포지토리에 Build를 올렸을 때, build 폴더와 .build 폴더 내부의 바이너리 파일 등이 origin/dev -> origin/main으로 merge 시도시 complexive conflicts일으킴
 	+ 깃헙의 Pull Request에서 complexive conflicts라서 자동 머징이 안되고, 바이너리 파일들, 로그 파일들이 `====>> HEAD` 와같은 형태로 마킹됨
 	+ `.gitignore` 안에다가 gradle 관련 것들을 추가 후, 성공적으로 병합 처리를 마무리
 
-
-	
-### 제제(Zeze)
-
-#### API 개발
-- 프로필
-  - 프로필 전체 변경 API 구현
-  - 프로필 사진 지정 API 구현
-- 프로필사진
-  - 프로필사진 코드 골격 구현 
-  - 프로필사진 개별 조회 API 구현
-  - 프로필사진 전체 조회 API 구현
-- 리팩토링
-  - 회원 로그인 API 리팩토링
-  - ~회원 로그아웃 API JWT 전체 구현 리팩토링~ → `진행중`
-
-#### 개발&협업 회고록
-- git 충돌로 개발보다 많은 시간을 보냈다. git을 기본적으로 공부할 필요를 느꼈다
-
-#### ISSUE
 - Git 충돌 발생 해결 -> 
   https://github.com/mock-rc4/netflix-test-server-bon-zeze/issues/48#issue-1182603888
+  
+#### 데일리 회고
+- Git 브랜치 전략에 대한 필요성 논의
+<br>
 
 </div>
 </details>
@@ -734,7 +654,7 @@ settings.gradle
 
 ## 2022.03.23 개발 일지
 	
-### 1차 피드백
+#### 1차 피드백
 - 모든 테이블에는 createdAt, updatedAt, status 컬럼이 들어가는 것이 좋음
 - 관리자 API보다는 사용자API에 집중하여 구현하는 것이 좋음
 - ERD 테이블에 관하여 재설계 필요
@@ -742,25 +662,21 @@ settings.gradle
 	- 영화에 인물을 넣는 것이 아닌 배우 테이블을 따로 생성
 	
 	
-### 1차 위클리 스크럼 회의록
+#### 1차 위클리 스크럼 회의록
 - 각 팀원들 전원이 현재까지 진행 상황에 대한 보고
 - 실제 서비스에 가까운 형태로 어떻게 구현할 수 있을지에 대한 토론
 - 프론트 팀원들의 개발 진행속도가 느려서(회원가입 단계 진행중인 상태) 이후에 요청사항이 있을 때 디스코드를 통해 소통하기로 의견을 모으고 마무리.
 
-### 제제 & 본(Bon)
+#### Work
 - 기능 API 목록 재정리
 - ERD 2차 설계
 	- 영화&시리즈를 Video 로 통합
 - Github Repository의 Projects, Issues 기능을 사용하기로 결정
-
-### 본(Bon)
 - 비디오, 영화 또는 시리즈 평가 서비스 코드 골격 구현
 - 영화 또는 시리즈 평가 추가 API 구현
 - 영화 또는 시리즈 평가 조회 API 구현
-
-
-### 제제(Zeze)
 - API uri 리팩토링 (피드백 반영)
+<br>
 
 </div>
 </details>
@@ -771,16 +687,13 @@ settings.gradle
 
 ## 2022.03.24 개발 일지
 
-### 본(Bon)
-
-#### API 개발
-- 영화 또는 시리즈 평가 변경
-- 영화 또는 시리즈 장르별 목록 조회 
-- 한 영화 또는 시리즈의 방영분 목록 전체 조회
-- 재생 기록 추가 
-- 재생 기록 조회
-- 재생 기록 변경 
-- 하나의 영화 또는 시리즈의 방영분 목록을 시즌 번호로 조회
+#### Work
+- 영화 또는 시리즈 평가 변경 API
+- 영화 또는 시리즈 장르별 목록 조회 API
+- 한 영화 또는 시리즈의 방영분 목록 전체 조회 API
+- 재생 기록 추가, 조회, 변경 API
+- 하나의 영화 또는 시리즈의 방영분 목록을 시즌 번호로 조회 API
+- 찜하기 추가, 변경  API
 
 #### ISSUES
 - Spring Boot BUild Issue - aws 서버상에서 build가 불가능한 문제 해결을 위한 시도
@@ -788,15 +701,11 @@ settings.gradle
   2. SSL을 사용한 Jetbrain Gateway 연결을 시도했으나 timeout expired 와 함께 접속이 실패
   3. 똑같은 시도를 여러번 해봤지만 접속 실패 후 AWS 서버가 다운되는 현상이 계속해서 발생, AWS 인스턴스 중지후 시작으로 복구
 - **WinSCP를 통해 로컬 빌드 demo-0.0.1-SNAPSHOT.jar 파일을 AWS 서버에 전송후 구동하여 문제를 해결!!**
-
-### 제제(Zeze)
-
-#### API 개발
-- 찜하기 추가 API 구현
-- 찜하기 변경 API 구현
-
-#### ISSUES
 - BUILD ERROR : `java.lang.NoClassDeFoundError` 해결 -> https://github.com/mock-rc4/netflix-test-server-bon-zeze/issues/50#issue-1182828859
+
+#### 데일리 회고
+- 위클리 스크럼을 반영하고, Issue 논의
+<br>
 
 </div>
 </details>
@@ -807,37 +716,24 @@ settings.gradle
 
 ## 2022.03.25 개발 일지
 
-### 본(Bon)
-
-#### API 개발
-- 시리즈의 시즌과 회차 갯수 목록 조회
-- 구글 소셜 로그인 서비스 
+#### Work
+- 시리즈의 시즌과 회차 갯수 목록 조회 API 
+- 구글 소셜 로그인 서비스 API 
 	- 파라메터를 조합하여 구글 로그인 URL을 불러오는 API 
 	- 소셜 로그인 WORKFLOW https://github.com/mock-rc4/netflix-test-server-bon-zeze/issues/70#issue-1189058146
-#### What I did today
-- 각 테이블마다 종속적인 튜플들을 어떻게 추가하면 좋을지에 대한 고민과 논의
-	- DB에 하나의 작품에 대한 정보를 추가하기 위한 과정이 빈번한 수작업이 요구된다.
-- 편의성을 위한 관리자용 API를 고려하였으나 사용자를 위한 API 개발이 우선이므로 좋은 대안이 아님을 멘토님께 질의 후 답변을 통해 판단
-	- 사용자 입장에서 먼저 구현해보도록 하자.
-- 역할을 분담하여 자신이 맡았던 메인 기능 API를 대부분 구현하였으므로 외부 API 탐색
-	- 멤버십 설정시 결제 기능을 사용하기 위해 카카오 페이 간편결제를 구현하고자 했으나 사업자 등록 & 가맹점 번호가 필요하므로 취소
-	- 구글 소셜 로그인인 공부 (진행중)
-### 제제(Zeze)
-#### API & Todo
-- `개발`
-	- 장르, 특징 코드 골격 구현
-	- 장르 대분류 조회 API 구현
-	- Top10 컨텐츠 조회 API 구현
-	- 인기 컨텐츠 조회 API 구현
-	- 시청중인 컨텐츠 조회 API 구현
-	- 장르별 컨텐츠 조회 API 구현
-	- 신규 컨텐츠 조회 API 구현
-	- 찜하기 컨텐츠 조회 API 구현
-	- 프로필 닉네임 조회 API 
-
+- 장르 대분류, Top10, 인기, 시청중인, 장르별, 신규, 찜하기 컨텐츠 조회 API
+- 프로필 닉네임 조회 API
+	
 #### ISSUES
 - Git 충돌 발생 해결 -> 
   https://github.com/mock-rc4/netflix-test-server-bon-zeze/issues/48#issue-1182603888
+  
+#### 데일리 회고
+- 각 테이블마다 종속적인 튜플들을 어떻게 추가하면 좋을지에 대한 고민과 논의
+	- DB에 하나의 작품에 대한 정보를 추가하기 위한 과정이 빈번한 수작업이 요구된다.
+- 편의성을 위한 관리자용 API를 고려하였으나 사용자를 위한 API 개발이 우선이므로 좋은 대안이 아님을 질의 후 답변을 통해 판단
+	- 사용자 입장에서 먼저 구현해보도록 하자.
+<br>
 
 </div>
 </details>
@@ -847,51 +743,40 @@ settings.gradle
 <div markdown="1">
 
 ## 2022.03.26 개발 일지
-### 제제 & 본(Bon)
-- 회의를 통한 API 기능 명세서 재정리
-	- 알람 기능 추가
-	- 검색 기능 추가
-	- 기타 조회 추가
-- ERD 3차 설계
-	- 알림, 검색 테이블 추가
-	- 비디오 테이블에서 컬럼 추가
-### 본(Bon)
 
-#### API 개발
-1. 소셜로그인 골격을 변경하는 Commit
-     - Facebook은 Social Login이 Javascript Documents 이므로 이외의 Social Login 서비스를 제공하는 Google, Line의 REST Login API를 사용하여 로그인 관련 서비스를 구현하였다.
-
-
-2. 이전 Pull Request에서의 Review를 반영한 수정내역 Commit
-
-3. Google REST LOGIN API 
+#### Work
+- 소셜로그인 골격 리팩터링
+     - Facebook은 Social Login이 Javascript Documents 이므로 이외의 Social Login 서비스를 제공하는 Google, Line의 REST Login API를 사용하여 로그인 관련 서비스를 구현
+- Google REST LOGIN API 
     - 소셜 로그인 WORKFLOW https://github.com/mock-rc4/netflix-test-server-bon-zeze/issues/70#issue-1189058146	
     - 파라메터를 조합하여 Google 로그인 창 URL을 반환
     - Google ID의 액세스 토큰 반환
     - Google Account 조회
     - Google Account로 회원가입
     - Google Account로 로그인
-
-4. Line REST LOGIN API
+- Line REST LOGIN API
     - 소셜 로그인 WORKFLOW https://github.com/mock-rc4/netflix-test-server-bon-zeze/issues/70#issue-1189058146	
     - 파라메터를 조합하여 Line 로그인 창 URL을 반환
     - Line ID의 액세스 토큰 반환
     - Line Account 조회
     - Line Account로 회원가입
     - Line Account로 로그인
-5. 네이버 소셜 로그인 패스워드 암호화, 소셜로그인 유형 검사(DAO) 적용, 줄간격 리팩토링 등
-
-
-### 제제(Zeze)
-#### API & Todo
-- `개발`
-	- 메인 페이지의 카테고리(Top10,인기,장르 등) uri 목록 조회 API 구현
-	- 검색 조회 API 구현 `진행중`
+- 네이버 소셜 로그인 패스워드 암호화, 소셜로그인 유형 검사(DAO) 적용, 줄간격 리팩토링 등
+- 메인 페이지의 카테고리(Top10,인기,장르 등) uri 목록 조회 API 구현
+- 검색 조회 API 구현 `진행중`
+- ERD 3차 설계
+	- 알림, 검색 테이블 추가
+	- 비디오 테이블에서 컬럼 추가
 
 #### ISSUES
 - Git 충돌 발생 해결 -> 
   https://github.com/mock-rc4/netflix-test-server-bon-zeze/issues/48#issue-1182603888
+<br>
 
+#### 데일리 회고
+- 알람, 검색, 기타 조회의 API 필요성 논의 후 API 기능 명세서 재정리
+- 알람, 검색과 관련한 ERD 3차 설계 및 논의
+<br>
 
 </div>
 </details>
@@ -901,32 +786,25 @@ settings.gradle
 <div markdown="1">
 
 ## 2022.03.27 개발 일지
-### 본(Bon)
-#### API 개발
 
-- 배우(Actor) 출연작품 목록 조회
-- 특징(Character) 작품 목록 조회
-- 작품에 출연하는 배우 목록을 조회 (videoIdx 사용)
-- 작품에 속한 장르 종류 목록을 조회 (videoIdx 사용)
-- 작품이 가지는 특징 목록을 조회 (videoIdx 사용)
-- 작품의 기타 상세 정보를 조회 (videoIdx 사용)
+#### Work
+- 배우(Actor), 특징(Character) 작품 목록 조회 API
+- 작품에 출연하는 배우 목록을 조회 API
+- 작품에 속한 장르 종류 목록을 조회 API
+- 작품이 가지는 특징 목록을 조회 API
+- 작품의 기타 상세 정보를 조회 API
 - 성인인증 필요여부 검증 (true or false)
-
-
-### 제제(Zeze)
-#### API & Todo
-- `개발`
-	- 알람,검색 코드 골격 구현
-	- 프로필 알림 조회 API 구현
-	- 검색(제목/사람/장르) 조회 API 구현
-	- 검색 기록 저장 로직 구현
-- `ERD`
-	- ERD 3차 설계 잘못된 부분 수정&보완
-- `DOCS`
-	- Issue 정리
+- 프로필 알림 조회 API
+- 검색(제목/사람/장르) 조회 API
+- 검색 기록 저장 로직 구현
+- ERD 3차 설계 잘못된 부분 수정&보완
 
 #### ISSUE
 JdbcTemplate - SQL Injection 위험 -> https://github.com/mock-rc4/netflix-test-server-bon-zeze/issues/47#issue-1182603514
+
+#### 데일리 회고
+- ERD 3차 설계 잘못된 부분 발견에 대한 논의 후 반영
+<br>
 
 </div>
 </details>
@@ -936,38 +814,22 @@ JdbcTemplate - SQL Injection 위험 -> https://github.com/mock-rc4/netflix-test-
 <div markdown="1">
 	
 ## 2022.03.28 개발 일지
-### 제제 & 본(Bon)
-
-- 구현했던 API를 넷플릭스 실제 서비스에 맞춰서 어떻게 수정, 보완할 수 있을지 협의함
-- ERD
+#### Work
+- ERD 변경
 	- Account : membershipStartDate 컬럼 추가 -> 정기 결제일을 표시하고, 멤버쉽에 따른 시청 권한을 가지도록 해야하므로.
-
-
-### 본(Bon)
-#### API 개발
-
-- 최다 검색 컨텐츠 조회
-
+- 최다 검색 컨텐츠 조회 API
    - 가장 빈번히 검색된 키워드를 통해 작품 목록을 조회
-- 수상작 장르별 컨텐츠 조회
-
+- 수상작 장르별 컨텐츠 조회 API
    - 장르별 수상 이력이 있는 작품 목록을 조회
-- 상세페이지 첫화면 동영상 재생시 정보 불러오기조회
-
+- 상세페이지 첫화면 동영상 재생시 정보 불러오기 조회 API
    - 첫화면 재생시 이전 기록으로부터 현재 재생시간을 불러오고, 에피소드 식별자를 반환
-
-
-#### 지난 Pull Request Comment를 따라 리팩토링
-#44 (comment)
-
-
-### 제제(Zeze)
-#### API & Todo
-- `개발`
-	- 알람 설정 API 구현
-	- 비디오 알람 조회 API 구현
-	- 이번주 공개 컨텐츠 목록 조회 API 구현
-	- 다음주 공개 컨텐츠 목록 조회 API 구현
+- 알람 설정, 조회 API
+- 이번주, 다음주 공개 컨텐츠 목록 조회 API
+- Code Review 반영하여 리팩토링 #44 (comment)
+	
+#### 데일리 회고
+- 구현했던 API를 넷플릭스 실제 서비스에 맞춰서 어떻게 수정, 보완할 수 있을지 협의
+<br>
 
 </div>
 </details>
@@ -978,18 +840,13 @@ JdbcTemplate - SQL Injection 위험 -> https://github.com/mock-rc4/netflix-test-
 	
 ## 2022.03.29 개발 일지
 
-### 본(Bon)
-#### API 개발
-- 감독 제작 작품 목록 조회
-- 작품제작에 참여한 감독 목록을 조회
-
-#### Refactoring
-- 불필요한 파라메터 제거
-
-#### ERD
+#### Work
+- 감독 제작 작품 목록 조회 API
+- 작품제작에 참여한 감독 목록을 조회 API
+- 찜하기 조회 API
+- 불필요한 파라메터 제거 리팩터링
+- API 최신화
 - Director, DirectorParticipate 테이블 추가
-
-#### DB
 - 시리즈 작품 정보 데이터 추가
 	- 관련 테이블 필요한 모든 테이터 추가(장르, 특징, 출연진, 감독 데이터와 이를 있는 관계 테이블의 데이터)
 
@@ -998,16 +855,9 @@ JdbcTemplate - SQL Injection 위험 -> https://github.com/mock-rc4/netflix-test-
   
 →해당 ISSUE 조회하기 (https://github.com/mock-rc4/netflix-test-server-bon-zeze/issues/65#issue-1186629313)
 
-### 제제(Zeze)
-#### API & Todo
-- `개발`
-	- 찜하기 조회 API 구현
-- `리팩토링`
-	- 기타 리팩토링 진행 `계속 진행 예정`
-- `DB`
-	- 영화 작품 정보 데이터 및 관련 테이블 데이터 추가
-- `DOCS`
-	- API 명세서 최신화 반영 
+#### 데일리 회고
+- 데이터가 부족하여 구현한 API들이 프론트에서 잘 적용되었는지 확인이 어렵다는 것을 확인
+<br>
 
 </div>
 </details>
@@ -1018,13 +868,13 @@ JdbcTemplate - SQL Injection 위험 -> https://github.com/mock-rc4/netflix-test-
 	
 ## 2022.03.30 개발 일지
 
-### 2차 피드백
+#### 2차 피드백
 - Git에 관하여 Issue는 브랜치 전략을 세워서 정리했을때 더 좋음
 - 모든 메서드에 try, catch문을 쓰기보단 예외 처리문을 따로 구현하는 방법 구상
 - API 에 관해 한번에 보내는 연습을 해보는 것도 좋음
 	
 	
-### 2차 위클리 스크럼 회의록
+#### 2차 위클리 스크럼 회의록
 - 각 팀원들 전원이 현재까지 진행 상황에 대한 보고
 - 프론트 팀원께서 각종 조회 API에서 필요한 공통의 데이터를 더 추가하기를 희망한다는 의견
 - 프론트 팀원들의 개발 단계가 작품 목록을 조회하는 수준에 이르러서 조회하는 방법, 보여지는 형태 등에 대해서 논의
@@ -1036,35 +886,17 @@ JdbcTemplate - SQL Injection 위험 -> https://github.com/mock-rc4/netflix-test-
 - 내일 저녁 이전 오후까지 수정, 보완에 대한 희망사항을 프론트 팀원들로부터 공유 받을 예정
 
 
-### 본(Bon)
-#### API
-- 리팩토링
-	- 외부 API 사용을 위한 baseURL 변경
-	- Validation & 에러코드 추가
-	- 외부 API 사용을 위한 baseURL 변경, 파라메터 추가, Validation & 에러코드 추가 등
-	- 프로필 삭제시 jwt를 header에서 요구하지 않음
-	- profile 목록과 profile 조회시 profilePhotoIdx -> profilePhotoUrl으로 리턴하도록 쿼리 구조 변경
+#### Work
+- 외부 API 사용을 위한 baseURL 변경 리팩터링
+- Validation & 에러코드 추가 리팩터링
+- 외부 API 사용을 위한 baseURL 변경, 파라메터 추가, Validation & 에러코드 추가 등 리팩터링
+- 프로필 삭제시 jwt를 header에서 요구하지 않음을 확인 후 리팩터링
+- profile 목록과 profile 조회시 profilePhotoIdx -> profilePhotoUrl으로 리턴하도록 쿼리 구조 변경 리팩터링
+- 로그인시 멤버쉽 반영 적용 리팩토링
+- 회원 핸드폰번호 변경 리팩토링
+- 프로필 생성시 jwt 미적용 리팩토링
+<br>
 
-#### DOCS
-- 담당하고 있는 API 기능 명세 전체 작성 완료
-	- 48건의 API 시트 검수
-	- 1건 삭제 (사유 : 구현하고 보니 관리자를 위한 API이므로 삭제)
-	- 47건의 API 시트에 스크린 샷 첨부 후 양식과 줄간격 통일
-
-#### Todo tomorrow
-- email 인증 api 알아보고 가능하다면 적용시키기
-
-
-
-
-### 제제(Zeze)
-#### API & Todo
-- `리팩토링`
-	- 로그인시 멤버쉽 반영 리팩토링
-	- 회원 핸드폰번호 변경 리팩토링
-	- 프로필 생성시 jwt 미적용 리팩토링
-	- 로그아웃 리팩토링 `진행중`
-	
 </div>
 </details>
 
@@ -1073,40 +905,26 @@ JdbcTemplate - SQL Injection 위험 -> https://github.com/mock-rc4/netflix-test-
 <div markdown="1">
 
 ## 2022.03.31 개발 일지
-### 본(Bon)
-#### API 개발
-- 이메일로 메세지 보내기
-- 이메일로 6자리 인증번호 보내기
 
-#### 리팩토링
-- 쿼리문을 잘못 작성하여 일부 API가 오작동 하는것을 발견하여 수정한 후 서버 반영
-
-#### DB
+#### Work
+- 이메일로 메세지 보내기 API
+- 이메일로 6자리 인증번호 보내기 API
+- 카카오 소셜 로그인 API
+- Top10 조회시에는 가로 사진이 아닌 세로 사진 반환하도록 리팩터링
+- 쿼리문을 잘못 작성하여 일부 API가 오작동 하는것을 발견하여 리팩터링 후 서버 반영
 - 프론트 팀원의 요청을 해결 : 충분한 양의 데이터가 필요
 	- 약 1천건의 데이터를 mysql procedure를 사용하여 일련의 규칙을 따라 추가 
 		- 비디오 방영분 정보 데이터
 		-  비디오와 장르간 관계 정보 데이터
 	
-#### documentations
-####  그동안 공부하며 모으고 기록해왔던 내용을 정리하여 issue에 업로드함.
-- Validation을 위해 작성하였던 정규식 뜯어보기 https://github.com/mock-rc4/netflix-test-server-bon-zeze/issues/72#issue-1189099715
-- Spring 공부 정리 https://github.com/mock-rc4/netflix-test-server-bon-zeze/issues/71#issue-1189099646	
-- (네이버, 구글, 라인)소셜 로그인 서비스 WORK FLOW https://github.com/mock-rc4/netflix-test-server-bon-zeze/issues/70#issue-1189058146
-- 자바로 하는 HTTP 요청 사용과 스프링 컨트롤러 어노테이션 정리 https://github.com/mock-rc4/netflix-test-server-bon-zeze/issues/69#issue-1189053121
-- Mysql Procedure 공부와 실제 데이터 연산에 적용하기 https://github.com/mock-rc4/netflix-test-server-bon-zeze/issues/65#issue-1186629313
-	
-	
-### 제제(Zeze)
-#### API & Todo
-- `개발`
-	- 카카오 소셜 로그인 API  -> `진행중`
-- `리팩토링`
-	- Top10 조회시에는 세로 사진 반환
-- `DB`
-	- 추가 데이터 생성
-- `DOCS`
-	- API 명세서 최신화 완료
-
+#### 데일리 회고
+- 그동안 공부하며 모으고 기록해왔던 내용을 정리하여 issue에 업로드
+	- Validation을 위해 작성하였던 정규식 뜯어보기 https://github.com/mock-rc4/netflix-test-server-bon-zeze/issues/72#issue-1189099715
+	- Spring 공부 정리 https://github.com/mock-rc4/netflix-test-server-bon-zeze/issues/71#issue-1189099646	
+	- (네이버, 구글, 라인)소셜 로그인 서비스 WORK FLOW https://github.com/mock-rc4/netflix-test-server-bon-zeze/issues/70#issue-1189058146
+	- 자바로 하는 HTTP 요청 사용과 스프링 컨트롤러 어노테이션 정리 https://github.com/mock-rc4/netflix-test-server-bon-zeze/issues/69#issue-1189053121
+	- Mysql Procedure 공부와 실제 데이터 연산에 적용하기 https://github.com/mock-rc4/netflix-test-server-bon-zeze/issues/65#issue-1186629313
+<br>
 	
 </div>
 </details>
