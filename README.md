@@ -1,19 +1,28 @@
-## 💻 넷플릭스 팀 프로젝트
+<br>
+
+![image](https://user-images.githubusercontent.com/65826145/184519222-6ac6198c-b340-49d7-ab9c-910cb00c8641.png)
+-----
+<br>
+
 ### 📝 Introduction
-+ 2주 동안 진행한 넷플릭스 팀 프로젝트입니다. (기간: 3/19~ 4/1)
+
++ 영화 시리즈 스트리밍을 위한 구독 서비스 REST API (Server)
 + 참여 인원 : 서버 2명 / 프론트엔드 1명
 
+<br>
 
 ### 🛠 Structure
-
-<details>
-	<summary><b>⚙️ Architecture</b></summary>
-<div markdown="1">
+#### ⚙️ Architecture
 
 ![image](https://user-images.githubusercontent.com/65826145/178272183-a2a2a9ee-3c22-4bd2-8c98-80724bd2c435.png)
 
-</div>
-</details>
+<br>
+
+#### ⚙️  ERD 구성
+
+![final_Netflix](https://user-images.githubusercontent.com/65826145/161184838-f26ca921-06b0-40b2-acd2-78026eb8562c.png)
+
+<br>
 
 <details>
 	<summary><b>⚙️ 디렉토리 맵</b></summary>
@@ -247,15 +256,6 @@ settings.gradle
 </details>
 
 <details>
-	<summary><b>⚙️ API 명세서</b></summary>
-<div markdown="1">
-	
-➡️ https://docs.google.com/spreadsheets/d/1XnL2T2ZSV2B-bibM3HePSYKhbeYDM_Ar/edit#gid=990061567
-	
-</div>
-</details>
-
-<details>
 	<summary><b>⚙️  기능 목록</b></summary>
 <div markdown="1">
 
@@ -336,34 +336,24 @@ settings.gradle
 </div>
 </details>
 
-<details>
-	<summary><b>⚙️  ERD 구성</b></summary>
-<div markdown="1">
-
-![final_Netflix](https://user-images.githubusercontent.com/65826145/161184838-f26ca921-06b0-40b2-acd2-78026eb8562c.png)
-
-	
-</div>
-</details>
-
 
 
 
 
 
 <br>
+<br>
 
 
+###  :loudspeaker: How We Worked
 
+- **애자일 프로세스를 차용하여 프로젝트 마일스톤 진행**
 
-
-
-
-
-### 📝 개발일지
+	- [**GitHub Project**](https://github.com/mock-rc4/netflix-test-server-bon-zeze/projects/1) 활용하여 스프린트 관리 <br> 
+	- 데일리 회고, 위클리 스크럼을 진행하며 스프린트에 맞게 프로토타입을 구현 및 개선
 
 <details>
-	<summary><b>개발 일지 (22.03.19 ~ 22.03.31)</b></summary>
+	<summary><b> 📝 개발 일지 </b></summary>
 <div markdown="1">
 
 <br>
@@ -739,7 +729,7 @@ settings.gradle
 </details>
 
 <details>
-	<summary><b>2022.03.23 개발 일지 ➕피드백1</b></summary>
+	<summary><b>2022.03.23 개발 일지 /피드백</b></summary>
 <div markdown="1">	
 
 ## 2022.03.23 개발 일지
@@ -1023,7 +1013,7 @@ JdbcTemplate - SQL Injection 위험 -> https://github.com/mock-rc4/netflix-test-
 </details>
 
 <details>
-	<summary><b>2022.03.30 개발 일지 ➕피드백2</b></summary>
+	<summary><b>2022.03.30 개발 일지 /피드백</b></summary>
 <div markdown="1">
 	
 ## 2022.03.30 개발 일지
@@ -1123,3 +1113,10 @@ JdbcTemplate - SQL Injection 위험 -> https://github.com/mock-rc4/netflix-test-
 
 </div>
 </details>
+
+<br>
+<br>
+
+###  :books: About More
+
+- [**블로그**](https://velog.io/@yyy96/series/Netflix-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8) 프로젝트 시리즈 정리 참조
