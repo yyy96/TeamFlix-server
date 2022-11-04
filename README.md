@@ -13,7 +13,7 @@
 
 ### 🛠 Structure
 #### ⚙️ Architecture
-
+- 프로젝트 기술 스택에 관한 [**포스팅 정리**](https://velog.io/@yyy96/프로젝트-기술스택) (➡ 해당 기술 선택 이유, 적용 과정) <br>
 ![image](https://user-images.githubusercontent.com/65826145/178272183-a2a2a9ee-3c22-4bd2-8c98-80724bd2c435.png)
 
 <br>
